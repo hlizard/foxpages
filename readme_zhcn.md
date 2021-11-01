@@ -143,10 +143,10 @@ Fox Server Pages 使开发这些网页成为可能, 利用静态页面的资源 
 
 在 Fox Pages Server 中 HTML 页被转换为 PRG 程序文件并编译为 FXP 文件, 因此页面处理速度非常快, 并且没有使用其他解释器的限制。
 
-在编译过程中，只处理`<FPS>`和`</FPS>`标记之间的代码，其余部分将作为静态内容发送。
+在编译过程中，只处理`<fps>`和`</fps>`标记之间的代码，其余部分将作为静态内容发送。
 
-静态内容的一个例子。
-在编译过程中, 只有在`<FPS>`和`</FPS>`之间的代码被处理, 其余部分将作为静态内容发送。
+静态内容的一个例子(保存为hello.html, 访问hello.fxp, 访问hello.html并不会编译且会返回源码, 是个隐患!)。
+在编译过程中, 只有在`<fps>`和`</fps>`之间的代码被处理, 其余部分将作为静态内容发送(`<fps>`和`</fps>`需全小写, 大写会导致奇怪的错误!)。
 
 静态内容的示例.
 ```
@@ -158,29 +158,29 @@ Hello World
 
 Hello World  
 
-这个例子缺少`<FPS>`和`</FPS>`标记，所以也被作为静态页面输出。
+这个例子缺少`<fps>`和`</fps>`标记，所以也被作为静态页面输出。
 ```
 <HTML>
 for nCounter = 1 to 3
-    Hello World
+    Hello World
 next
 </HTML>
 ```
 结果：
 
 for lnCounter = 1 to 3  
-    Hello World  
+    Hello World  
 next  
 
 一个使用标记的例子，它们负责发送静态文本和表达式。
 ```
 <HTML>
-    <FPS>
-       cWorld = "World"
-       for nCounter = 1 to 3
-          <t>Hello </t><e>cWorld</e><br>
-       next
-    </FPS>
+    <fps>
+       cWorld = "World"
+       for nCounter = 1 to 3
+          <t>Hello </t><e>cWorld</e><br>
+       next
+    </fps>
 </HTML>
 ```
 结果：
@@ -192,17 +192,17 @@ Hello World
 使用其他 HTML 标记组合编程的示例。每行都以 HTML 标记开始, 或由标记发送。
 ```
 <HTML>
-    <FPS>
-       <b>Begin</b><br><br>
+    <fps>
+       <b>Begin</b><br><br>
 
-       cWorld = "World"
-       for nCounter = 1 to 3
-          <b><t>Hello </t><e>cWorld</e></b><br>
-       next
+       cWorld = "World"
+       for nCounter = 1 to 3
+          <b><t>Hello </t><e>cWorld</e></b><br>
+       next
 
        <br>
        <t>End</t>
-    </FPS>
+    </fps>
 </HTML>
 ```
 结果：
